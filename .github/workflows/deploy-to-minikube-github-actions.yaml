@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     name: build Node.js Docker Image and deploy to the minikube
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Start minikube
       uses: medyagh/setup-minikube@master
     - name: Try the cluster !
@@ -25,5 +25,5 @@ jobs:
     - name: Test service URLs
       run: |
           minikube service list
-          minikube service nodejs-app --url
-          minikube logs --file=logs.txt   
+          minikube service devopshint/node-app:latest-svc --url
+          curl $(minikube service devopshint/node-app:latest-svc --url)
