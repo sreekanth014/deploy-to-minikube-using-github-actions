@@ -1,4 +1,4 @@
-name: Deploy to Minikube using GitHub Actions
+name: Deploy to Minikube using GitHub Actionss
 
 on: [push]
   
