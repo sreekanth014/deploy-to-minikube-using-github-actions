@@ -25,5 +25,6 @@ jobs:
     - name: Test service URLs
       run: |
           minikube service list
-          minikube service devopshint/node-app:latest-svc --url
-          curl $(minikube service devopshint/node-app:latest-svc --url)
+          SERVICE_NAME=$(kubectl get svc -n default -o jsonpath="{.items[0].metadata.name}")
+          minikube service $SERVICE_NAME --url
+          curl $(minikube service $SERVICE_NAME --url)
